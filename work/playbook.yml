@@ -4,13 +4,18 @@
   become: yes
   gather_facts: no
   tasks:
-    - name: install httpd
-      yum:
-        name: httpd
-        state: latest
+    - name: Collect facts
+      setup:
 
-    - name: start & enabled httpd
+    - name: install nginx
+      apt:
+        name: nginx
+        state: latest
+      when: ansible_os_family == "Debian"
+
+    - name: start & enabled nginx
       service:
-        name: httpd
+        name: nginx
         state: started
         enabled: yes
+      when: ansible_os_family == "Debian"

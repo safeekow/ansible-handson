@@ -62,32 +62,28 @@ node01 | SUCCESS => {
 ## Playbookの実行
 
 ```bash
-$ docker compose exec ansible ansible-playbook playbook.yml
+% docker compose exec ansible ansible-playbook playbook.yml
 
-PLAY [deploy httpd server] ***********************************************************************************************************
+PLAY [deploy httpd server] ****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 
-TASK [install httpd] *****************************************************************************************************************
-[WARNING]: Platform linux on host node02 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of
-another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
-core/2.15/reference_appendices/interpreter_discovery.html for more information.
-changed: [node02]
-[WARNING]: Platform linux on host node01 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of
-another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
-core/2.15/reference_appendices/interpreter_discovery.html for more information.
+TASK [Collect facts] **********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+ok: [node02]
+ok: [node01]
+ok: [node03]
+
+TASK [install nginx] **********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 changed: [node01]
-[WARNING]: Platform linux on host node03 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of
-another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
-core/2.15/reference_appendices/interpreter_discovery.html for more information.
+changed: [node02]
 changed: [node03]
 
-TASK [start & enabled httpd] *********************************************************************************************************
-changed: [node03]
+TASK [start & enabled nginx] **************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 changed: [node02]
+changed: [node03]
 changed: [node01]
 
-PLAY RECAP ***************************************************************************************************************************
-node01                     : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-node02                     : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-node03
+PLAY RECAP ********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+node01                     : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node02                     : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node03                     : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 
