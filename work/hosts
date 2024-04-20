@@ -1,4 +1,4 @@
 [node]
-node01
-node02
-node03
+node01 ansible_connection=docker
+node02 ansible_connection=docker
+node03 ansible_connection=docker
